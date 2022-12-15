@@ -14,31 +14,29 @@ const images = [
 ];
 
 const gallery = document.querySelector('.gallery')
-// images.forEach((image) => {	
-// 	const liEl = document.createElement('li');
-// 	const imgEl = document.createElement('img');
-
-// 	imgEl.src = `${image.url}`;
-// 	imgEl.alt = `${image.alt}`;
-
-// 	gallery.style.maxWidth = '1600px';
-// 	gallery.style.display = 'flex';
-// 	gallery.style.gap = '20px';
-// 	gallery.style.flexWrap = 'wrap';
-// 	gallery.style.padding = '0';
-
-// 	liEl.style.listStyle = 'none';
-// 	liEl.style.flexBasis = 'calc((100% - 20px * (3 - 1)) / 3)';
-
-// 	imgEl.style.display = 'block';
-// 	imgEl.style.height = 'auto';
-// 	imgEl.style.maxWidth = '100%';
-	
-// 	liEl.append(imgEl)
-// 	gallery.append(liEl)
-// })
 
 const item = images
-	.map((image) => `<li><img src=${image.url} alt=${image.alt}></img></li>`).join("");
+	.map((image) => `<li class="gallery__item"><img class="gallery__img" src=${image.url} alt=${image.alt}></img></li>`).join("");
+
 
 gallery.insertAdjacentHTML("beforeend", item);
+
+gallery.style.maxWidth = '1600px';
+gallery.style.display = 'flex';
+gallery.style.gap = '20px';
+gallery.style.flexWrap = 'wrap';
+gallery.style.padding = '0';
+
+const liEls = gallery.querySelectorAll(".gallery__item");
+liEls.forEach((li) => {
+	li.style.listStyle = 'none';
+	li.style.flexBasis = 'calc((100% - 20px * (3 - 1)) / 3)';
+})
+
+const imgEls = gallery.querySelectorAll(".gallery__img");
+imgEls.forEach((img) => {
+	img.style.display = 'block';
+	img.style.height = 'auto';
+	img.style.maxWidth = '100%';
+})
+
